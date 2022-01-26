@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="se">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Moment 1.2</title>
+    <link rel="stylesheet" href="/css/site.css" />
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <h1><a asp-page="Index">Marcus .NET Core</a></h1>
+        </div>
+        @{
+            // Hämta nuvarande datum
+            DateTime currentDate = DateTime.Now;
+        }
+        <!-- Skriv ut dagens datum -->
+        <div class="date">
+            <p>Dagens datum är: @currentDate.ToString("yyyy-MM-dd")</p>
+        </div>
+    </header>
+    <!-- Navigation -->
+    <div class="container">
+        <div class="left">
+            <nav>
+                <div>
+                    <ul>
+                        <li>
+                            <a asp-page="/Index" class="navBtn">Start</a>
+                        </li>
+                        <li>
+                            <a asp-page="/Razor" class="navBtn">Razor</a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-page="/omsidan" class="navBtn">Om sidan</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <!-- Main -->
+        <div class="right">
+            <main role="main">
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div>
+            <p>Av Marcus Nygård - Kontakta mig via e-post: many2005@student.miun.se</p>
+        </div>
+    </footer>
+
+    <script src="/js/main.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+
+</html>

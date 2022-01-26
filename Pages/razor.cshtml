@@ -1,0 +1,64 @@
+﻿@page
+@model MyApp.Namespace.razorModel
+@{
+    ViewData["Title"] = "Razor";
+}
+
+<h2>Razor</h2>
+<h3>Information</h3>
+@{
+    // Hämta nuvarande datum/tid
+    DateTime currentDate = DateTime.Now;
+}
+<!-- Skriv ut nuvarande datum/tid -->
+<p class="dateTime">Datum/klockslag: @currentDate</p>
+<!-- Utformning av klocka -->
+<div class="clock">
+    <div class="hour">
+        <div class="hr" id="hr"></div>
+    </div>
+    <div class="min">
+        <div class="mn" id="mn"></div>
+    </div>
+    <div class="sec">
+        <div class="sc" id="sc"></div>
+    </div>
+</div>
+
+@{
+    // Hämta nuvarande datum/tid
+    DateTime checkDay = DateTime.Now;
+    // Hämta veckodag och lagra i variabel som sträng
+    string currentDay = checkDay.DayOfWeek.ToString();
+    string message = "";
+
+    // Kontrollera om veckodag är måndag
+    if (currentDay == "Monday")
+    {
+        message = "Idag är det måndag!";
+    }
+    else
+    {
+        message = "Idag är det inte måndag!";
+    }
+
+    // Lista med strängar 
+    List<string> Courses = new List<string>();
+    Courses.Add("DT057G - Webbutveckling 1");
+    Courses.Add("DT093G - Webbutveckling 2");
+    Courses.Add("DT003G - Databaser");
+    Courses.Add("DT152G - Webbdesign för CMS");
+    Courses.Add("DT173G - Webbutveckling 3");
+    Courses.Add("DT162G - Javascriptbaserad Webbutveckling");
+}
+
+<p class="mondayCheck">@message</p>
+
+<h3>Kurser som jag läst:</h3>
+<ul class="courses">
+    <!-- Loopa ut kurser från lista "Courses" --> 
+    @foreach (var course in Courses)
+    {
+        <li>@course</li>
+    }
+</ul>
